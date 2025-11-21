@@ -2,6 +2,17 @@
 
 @section('content')
 
+    {{-- 1. --}}
+    {{-- make it row --}}
+    {{-- justify-content-center --}}
+
+
+    {{-- 2. Page header--}}
+    {{-- set color for lg screen --}}
+    {{-- d-flex , justify-content-between--}}
+    {{-- align item center --}}
+    {{-- set margin  --}} 
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -10,17 +21,12 @@
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h2 class="text-dark-emphasis m-0 mb-1">Create Note</h2>
-                    <p class="text-muted m-0">Add a new note to ypur collection</p>
+                    <p class="text-muted m-0">Add a new note to your collection</p>
                 </div>
             </div>
 
             {{-- success message --}}
-            @session('success')
-                <div class="alert alert-success alert-dismissable fade show" role="alert">
-                    <strong>success!</strong> {{$value}}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endsession
+            @include('notes.partials.success-message')
 
             <div class="card">
                 <div class="card-body p-4">

@@ -11,7 +11,7 @@ class UpdateNoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateNoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => [
+                'title' => 'required|string|min:3|max:255|unique:notes,title|ignore:$this->route("note"),
+                'content' => 'required|string|min:10',
+            ],
         ];
     }
 }

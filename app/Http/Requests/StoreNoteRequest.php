@@ -11,7 +11,8 @@ class StoreNoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Change to true to authorize access to user to store note
+        return true;
     }
 
     /**
@@ -21,8 +22,10 @@ class StoreNoteRequest extends FormRequest
      */
     public function rules(): array
     {
+        // "unique:notes,title" means "Must be unique in the notes table"
         return [
-            //
+            'title' => 'required|string|min:3|max:255|unique:notes,title',
+            'content' => 'required|string|min:10',
         ];
     }
 }

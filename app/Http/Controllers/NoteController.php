@@ -29,7 +29,8 @@ class NoteController extends Controller
      */
     public function store(StoreNoteRequest $request)
     {
-        //
+        Note::create($request->validated());
+        return redirect()->back()->with('success', 'Note created successfully');
     }
 
     /**

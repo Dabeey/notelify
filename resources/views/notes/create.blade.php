@@ -1,3 +1,89 @@
-<div>
-    <!-- An unexamined life is not worth living. - Socrates -->
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            {{-- page header --}}
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="text-dark-emphasis m-0 mb-1">Create Note</h2>
+                    <p class="text-muted m-0">Add a new note to ypur collection</p>
+                </div>
+            </div>
+
+            {{-- success message --}}
+            @session('success')
+                <div class="alert alert-success alert-dismissable fade show" role="alert">
+                    <strong>success!</strong> {{$value}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endsession
+
+            <div class="card">
+                <div class="card-body p-4">
+                    {{-- create post form --}}
+
+                    {{-- 1. --}}
+                    {{-- After creating the basic blade file, create the resource route in web.php then the create note in note controller. --}}
+                    {{-- * link the route to the form "{{route('notes.store')}}" --}}
+                    {{-- * Add csrf token to protect the form from csrf attacks --}}
+                    {{-- * Apply the is-invalid class to apply a red border to the textarea when there is an error "@error('title') is-invalid @enderror" --}}
+                    {{-- * Display the error message --}}
+                    {{-- * Retain previously typed content using the "old{{}}" method "value="old{{'title'}}"" --}}
+                    {{-- *Display success message [above te card/ under page header--}}
+
+                    <form action="{{route('notes.store')}}" method="POST">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="title" class="form-label">Title</label>
+                            <input 
+                                type="text" 
+                                id="title"
+                                name="title"
+                                value="{{old('title')}}"
+                                class="form-control @error('title') is-invalid @enderror"
+                                placeholder="Enter a descriptive title"
+                                autofocus>
+
+                                {{-- Display the error message --}}
+                                @error('title')
+                                    <span class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="content" class="form-label">Content</label>
+                            <textarea 
+                                id="content"
+                                name="content"
+                                value="{{old('content')}}"
+                                class="form-control @error('content') is-invalid @enderror"
+                                rows="8"
+                                placeholder="Write your note content here..."
+                                ></textarea>
+
+                                 {{-- Display the error message --}}
+                                 @error('content')
+                                 <span class="invalid-feedback">{{$message}}</span>
+                             @enderror
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-info" type="submit">
+                                Create Note
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+            
+        </div>
+    </div>
 </div>
+    
+@endsection

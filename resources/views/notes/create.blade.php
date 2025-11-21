@@ -23,6 +23,9 @@
                     <h2 class="text-dark-emphasis m-0 mb-1">Create Note</h2>
                     <p class="text-muted m-0">Add a new note to your collection</p>
                 </div>
+
+                <a href="{{ route('notes.index')}}" class="btn btn-warning">Back to Notes</a>
+
             </div>
 
             {{-- success message --}}

@@ -55,7 +55,9 @@ class NoteController extends Controller
      */
     public function update(UpdateNoteRequest $request, Note $note)
     {
-        //
+        $note->update($request->validated());
+        return redirect()->route('notes.index')->with('success', 'Note updated successfully');
+
     }
 
     /**

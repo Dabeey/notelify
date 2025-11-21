@@ -11,7 +11,7 @@
         {{-- page header --}}
         <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
             <div>
-                <h2 class="fw-bold mb-2">Notes</h2>
+                <h2 class="fw-bold mb-2">Notelify</h2>
                 <p class="text-muted mb-0">Manage all your notes in one place</p>
             </div>
 
